@@ -36,16 +36,31 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
             ActivitiesController activitiesController = new ActivitiesController(new ActivitiesRepository(new ApplicationDbContext()));
             IEnumerable<Activities> activities = await activitiesController.FindAll();
 
+            ExpenseController expenseController = new ExpenseController(new ExpenseRepository(new ApplicationDbContext()));
+            IEnumerable<Expense> expenses = await expenseController.FindAll();
+
             foreach (Activities activitie in activities)
             {
                 dataGridView1.Rows.Add(activitie.Name, activitie.Location, activitie.Time, activitie.Date.ToString("dd/MM/yyyy"), activitie.Status, "Editar");
             }
+
+            foreach (Expense expense in expenses)
+            {
+                dataGridView2.Rows.Add(expense.Category, Convert.ToDecimal(expense.Value).ToString("C", new CultureInfo("pt-BR")), expense.Description, "Editar");
+            }
         }
 
-        private void HandleOpenFormCreate(object sender, EventArgs e)
+        private void HandleOpenFormCreateActivitie(object sender, EventArgs e)
         {
             FormCadastroAtividade formCadastroAtividade = new FormCadastroAtividade(_id);
             formCadastroAtividade.Show();
+            this.Hide();
+        }
+
+        private void HandleOpenFormCreateExpense(object sender, EventArgs e)
+        {
+            FormCadastroDespesa formCadastroDespesa = new FormCadastroDespesa(_id);
+            formCadastroDespesa.Show();
             this.Hide();
         }
 
@@ -59,6 +74,13 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
                 this.Hide();
 
             }
+
+            if (e.ColumnIndex == dataGridView2.Columns["expenseEdit"].Index && e.RowIndex >= 0)
+            {
+                
+            }
+
+
         }
     }
 }

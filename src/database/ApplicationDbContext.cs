@@ -16,5 +16,6 @@ namespace gerenciadorViagens_windowsForm_csharp.src.database
 
         public DbSet<Travel> Travels { get; set; }
         public DbSet<Activities> Activities { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
     }
 }

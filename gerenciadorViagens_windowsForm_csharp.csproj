@@ -60,14 +60,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\controller\ActivitiesController.cs" />
+    <Compile Include="src\controller\ExpenseController.cs" />
     <Compile Include="src\controller\TravelController.cs" />
     <Compile Include="src\database\ApplicationDbContext.cs" />
     <Compile Include="src\interfaces\IRepository.cs" />
     <Compile Include="src\model\Activities.cs" />
+    <Compile Include="src\model\Expense.cs" />
     <Compile Include="src\model\Travel.cs" />
     <Compile Include="src\repository\ActivitiesRepository.cs" />
+    <Compile Include="src\repository\ExpenseRepository.cs" />
     <Compile Include="src\repository\TravelRepository.cs" />
     <Compile Include="src\service\ActivitiesService.cs" />
+    <Compile Include="src\service\ExpenseService.cs" />
     <Compile Include="src\service\TravelService.cs" />
     <Compile Include="src\view\DetalhesDaViagem.cs">
       <SubType>Form</SubType>
@@ -81,6 +85,12 @@
     <Compile Include="src\view\FormAtualizarAtividade.Designer.cs">
       <DependentUpon>FormAtualizarAtividade.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\view\FormAtualizarDespesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\view\FormAtualizarDespesa.Designer.cs">
+      <DependentUpon>FormAtualizarDespesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\view\FormAtualizarViagem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +102,12 @@
     </Compile>
     <Compile Include="src\view\FormCadastroAtividade.Designer.cs">
       <DependentUpon>FormCadastroAtividade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\view\FormCadastroDespesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\view\FormCadastroDespesa.Designer.cs">
+      <DependentUpon>FormCadastroDespesa.cs</DependentUpon>
     </Compile>
     <Compile Include="src\view\FormCadastroViagem.cs">
       <SubType>Form</SubType>
@@ -122,11 +138,17 @@
     <EmbeddedResource Include="src\view\FormAtualizarAtividade.resx">
       <DependentUpon>FormAtualizarAtividade.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\view\FormAtualizarDespesa.resx">
+      <DependentUpon>FormAtualizarDespesa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\view\FormAtualizarViagem.resx">
       <DependentUpon>FormAtualizarViagem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\view\FormCadastroAtividade.resx">
       <DependentUpon>FormCadastroAtividade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\view\FormCadastroDespesa.resx">
+      <DependentUpon>FormCadastroDespesa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\view\FormCadastroViagem.resx">
       <DependentUpon>FormCadastroViagem.cs</DependentUpon>

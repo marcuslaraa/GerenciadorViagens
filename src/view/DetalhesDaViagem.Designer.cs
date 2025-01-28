@@ -224,7 +224,7 @@
             this.btnCadastrarViagem.TabIndex = 7;
             this.btnCadastrarViagem.Text = "Criar atividade";
             this.btnCadastrarViagem.UseVisualStyleBackColor = false;
-            this.btnCadastrarViagem.Click += new System.EventHandler(this.HandleOpenFormCreate);
+            this.btnCadastrarViagem.Click += new System.EventHandler(this.HandleOpenFormCreateActivitie);
             // 
             // button1
             // 
@@ -236,6 +236,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Adicionar despesa";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.HandleOpenFormCreateExpense);
             // 
             // lb_description
             // 
