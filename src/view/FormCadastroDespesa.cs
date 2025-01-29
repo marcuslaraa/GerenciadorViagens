@@ -31,11 +31,12 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
 
         private async void HandleCreateExpense(object sender, EventArgs e)
         {
+            int travelId = _id;
             string category = tbx_category.Text;
             string description = tbx_description.Text;
             string value = tbx_value.Text;
 
-            Expense expense = new Expense(category, value, description);
+            Expense expense = new Expense(travelId, category, value, description);
 
             ExpenseController expenseController = new ExpenseController(new ExpenseRepository(new ApplicationDbContext()));
 
@@ -56,6 +57,14 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
             detalhesDaViagem.Show();
             this.Close();
 
+        }
+
+        private void KeyPressNumberExpense(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

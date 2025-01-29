@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using gerenciadorViagens_windowsForm_csharp.src.interfaces;
 using gerenciadorViagens_windowsForm_csharp.src.model;
 using gerenciadorViagens_windowsForm_csharp.src.database;
+using System.Data.Entity;
 
 namespace gerenciadorViagens_windowsForm_csharp.src.repository
 {
@@ -64,6 +65,11 @@ namespace gerenciadorViagens_windowsForm_csharp.src.repository
                 return true;
             }
             return false; 
+        }
+
+        public async Task<IEnumerable<Travel>> GetByTravelIdAsync(int travelId)
+        {
+            return await _context.Travels.Where(a => a.Id == travelId).ToListAsync();
         }
     }
 }

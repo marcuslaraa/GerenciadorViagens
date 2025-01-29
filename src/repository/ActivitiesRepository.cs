@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +64,11 @@ namespace gerenciadorViagens_windowsForm_csharp.src.repository
             }
 
             return false;
+        }
+
+        public async Task<IEnumerable<Activities>> GetByTravelIdAsync(int travelId)
+        {
+            return await _context.Activities.Where(a => a.TravelId == travelId).ToListAsync();
         }
     }
 }

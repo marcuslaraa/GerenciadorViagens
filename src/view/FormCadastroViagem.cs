@@ -49,5 +49,13 @@ namespace gerenciadorViagens_windowsForm_csharp
             listagemViagens.Show();
             this.Close();
         }
+
+        private void KeyPressNumberOrcamento(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

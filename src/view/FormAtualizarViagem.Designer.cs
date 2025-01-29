@@ -51,7 +51,7 @@
             this.tbx_finalDate.Location = new System.Drawing.Point(177, 315);
             this.tbx_finalDate.Name = "tbx_finalDate";
             this.tbx_finalDate.Size = new System.Drawing.Size(424, 29);
-            this.tbx_finalDate.TabIndex = 15;
+            this.tbx_finalDate.TabIndex = 4;
             // 
             // tbx_initialDate
             // 
@@ -60,7 +60,7 @@
             this.tbx_initialDate.Location = new System.Drawing.Point(177, 257);
             this.tbx_initialDate.Name = "tbx_initialDate";
             this.tbx_initialDate.Size = new System.Drawing.Size(424, 29);
-            this.tbx_initialDate.TabIndex = 16;
+            this.tbx_initialDate.TabIndex = 3;
             // 
             // tbx_description
             // 
@@ -69,7 +69,7 @@
             this.tbx_description.Multiline = true;
             this.tbx_description.Name = "tbx_description";
             this.tbx_description.Size = new System.Drawing.Size(424, 30);
-            this.tbx_description.TabIndex = 11;
+            this.tbx_description.TabIndex = 6;
             // 
             // tbx_budget
             // 
@@ -78,7 +78,7 @@
             this.tbx_budget.Multiline = true;
             this.tbx_budget.Name = "tbx_budget";
             this.tbx_budget.Size = new System.Drawing.Size(424, 30);
-            this.tbx_budget.TabIndex = 12;
+            this.tbx_budget.TabIndex = 5;
             // 
             // tbx_destination
             // 
@@ -87,7 +87,7 @@
             this.tbx_destination.Multiline = true;
             this.tbx_destination.Name = "tbx_destination";
             this.tbx_destination.Size = new System.Drawing.Size(424, 30);
-            this.tbx_destination.TabIndex = 13;
+            this.tbx_destination.TabIndex = 2;
             // 
             // tbx_travelName
             // 
@@ -96,7 +96,7 @@
             this.tbx_travelName.Multiline = true;
             this.tbx_travelName.Name = "tbx_travelName";
             this.tbx_travelName.Size = new System.Drawing.Size(424, 30);
-            this.tbx_travelName.TabIndex = 14;
+            this.tbx_travelName.TabIndex = 1;
             // 
             // description
             // 
@@ -175,7 +175,7 @@
             this.button2.Location = new System.Drawing.Point(490, 567);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(168, 42);
-            this.button2.TabIndex = 17;
+            this.button2.TabIndex = 7;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.HandleCancelUpdateTravel);
@@ -187,7 +187,7 @@
             this.button1.Location = new System.Drawing.Point(664, 567);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(168, 42);
-            this.button1.TabIndex = 18;
+            this.button1.TabIndex = 8;
             this.button1.Text = "Salvar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.handleUpdateTravelAsync);

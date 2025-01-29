@@ -54,5 +54,10 @@ namespace gerenciadorViagens_windowsForm_csharp.src.service
                 return false;
             }
         }
+
+        public async Task<IEnumerable<Activities>> FindAllByTravelId(int travelId)
+        {
+            return await _activitiesRepository.GetByTravelIdAsync(travelId);
+        }
     }
 }

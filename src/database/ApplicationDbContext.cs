@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using gerenciadorViagens_windowsForm_csharp.src.model;
@@ -17,5 +18,6 @@ namespace gerenciadorViagens_windowsForm_csharp.src.database
         public DbSet<Travel> Travels { get; set; }
         public DbSet<Activities> Activities { get; set; }
         public DbSet<Expense> Expenses { get; set; }
+
     }
 }

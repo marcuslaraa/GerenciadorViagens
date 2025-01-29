@@ -36,8 +36,9 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
             DateTime date = tbx_date.Value;
             string time = tbx_time.Text;
             string status = tbx_status.Text;
+            int travelId = _id;
 
-            Activities activities = new Activities(name, location, time, date, status);
+            Activities activities = new Activities(travelId, name, location, time, date, status);
 
             ActivitiesController activitiesController = new ActivitiesController(new ActivitiesRepository(new ApplicationDbContext()));
 

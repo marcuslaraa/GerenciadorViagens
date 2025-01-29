@@ -88,6 +88,19 @@ namespace gerenciadorViagens_windowsForm_csharp.src.controller
             return result;
         }
 
+        public async Task<IEnumerable<Expense>> GetByTravelIdAsync(int travelId)
+        {
+            try
+            {
+                return await _expenseService.FindAllByTravelId(travelId);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Erro ao buscar despesas por ID de viagem: {e.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return Enumerable.Empty<Expense>();
+            }
+        }
+
 
     }
 }

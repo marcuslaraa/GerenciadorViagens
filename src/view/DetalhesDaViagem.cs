@@ -36,10 +36,9 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
 
             dataGridView1.Rows.Clear();
 
-            IEnumerable<Activities> activities = await _activitiesController.FindAll();
+            IEnumerable<Activities> activities = await _activitiesController.GetByTravelIdAsync(_id);
 
-            ExpenseController expenseController = new ExpenseController(new ExpenseRepository(new ApplicationDbContext()));
-            IEnumerable<Expense> expenses = await expenseController.FindAll();
+            IEnumerable<Expense> expenses = await _expenseController.GetByTravelIdAsync(_id);
 
             foreach (Activities activitie in activities)
             {
@@ -48,7 +47,8 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
 
             foreach (Expense expense in expenses)
             {
-                dataGridView2.Rows.Add(expense.Id, expense.Category, expense.Value, expense.Description, "Editar", "Excluir");
+                decimal Value = Convert.ToDecimal(expense.Value);
+                dataGridView2.Rows.Add(expense.Id, expense.Category, Value.ToString("C2", new CultureInfo("pt-BR")), expense.Description, "Editar", "Excluir");
             }
         }
 

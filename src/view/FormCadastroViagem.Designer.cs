@@ -62,7 +62,7 @@
             this.travelName.Location = new System.Drawing.Point(32, 155);
             this.travelName.Name = "travelName";
             this.travelName.Size = new System.Drawing.Size(131, 18);
-            this.travelName.TabIndex = 1;
+            this.travelName.TabIndex = 0;
             this.travelName.Text = "Nome da Viagem";
             // 
             // destination
@@ -72,7 +72,7 @@
             this.destination.Location = new System.Drawing.Point(32, 212);
             this.destination.Name = "destination";
             this.destination.Size = new System.Drawing.Size(62, 18);
-            this.destination.TabIndex = 1;
+            this.destination.TabIndex = 9;
             this.destination.Text = "Destino";
             // 
             // initialDate
@@ -82,7 +82,7 @@
             this.initialDate.Location = new System.Drawing.Point(32, 259);
             this.initialDate.Name = "initialDate";
             this.initialDate.Size = new System.Drawing.Size(104, 18);
-            this.initialDate.TabIndex = 1;
+            this.initialDate.TabIndex = 10;
             this.initialDate.Text = "Data de início";
             // 
             // finalDate
@@ -92,7 +92,7 @@
             this.finalDate.Location = new System.Drawing.Point(32, 317);
             this.finalDate.Name = "finalDate";
             this.finalDate.Size = new System.Drawing.Size(74, 18);
-            this.finalDate.TabIndex = 1;
+            this.finalDate.TabIndex = 11;
             this.finalDate.Text = "Data final";
             // 
             // budget
@@ -102,7 +102,7 @@
             this.budget.Location = new System.Drawing.Point(32, 383);
             this.budget.Name = "budget";
             this.budget.Size = new System.Drawing.Size(85, 18);
-            this.budget.TabIndex = 1;
+            this.budget.TabIndex = 13;
             this.budget.Text = "Orçamento";
             // 
             // description
@@ -112,7 +112,7 @@
             this.description.Location = new System.Drawing.Point(32, 437);
             this.description.Name = "description";
             this.description.Size = new System.Drawing.Size(80, 18);
-            this.description.TabIndex = 1;
+            this.description.TabIndex = 12;
             this.description.Text = "Descrição";
             // 
             // tbx_travelName
@@ -122,7 +122,7 @@
             this.tbx_travelName.Multiline = true;
             this.tbx_travelName.Name = "tbx_travelName";
             this.tbx_travelName.Size = new System.Drawing.Size(424, 30);
-            this.tbx_travelName.TabIndex = 2;
+            this.tbx_travelName.TabIndex = 1;
             // 
             // tbx_destination
             // 
@@ -140,7 +140,8 @@
             this.tbx_budget.Multiline = true;
             this.tbx_budget.Name = "tbx_budget";
             this.tbx_budget.Size = new System.Drawing.Size(424, 30);
-            this.tbx_budget.TabIndex = 2;
+            this.tbx_budget.TabIndex = 5;
+            this.tbx_budget.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNumberOrcamento);
             // 
             // tbx_description
             // 
@@ -149,7 +150,7 @@
             this.tbx_description.Multiline = true;
             this.tbx_description.Name = "tbx_description";
             this.tbx_description.Size = new System.Drawing.Size(424, 30);
-            this.tbx_description.TabIndex = 2;
+            this.tbx_description.TabIndex = 6;
             // 
             // tbx_initialDate
             // 
@@ -166,7 +167,7 @@
             this.tbx_finalDate.Location = new System.Drawing.Point(177, 315);
             this.tbx_finalDate.Name = "tbx_finalDate";
             this.tbx_finalDate.Size = new System.Drawing.Size(424, 29);
-            this.tbx_finalDate.TabIndex = 3;
+            this.tbx_finalDate.TabIndex = 4;
             // 
             // button1
             // 
@@ -175,7 +176,7 @@
             this.button1.Location = new System.Drawing.Point(640, 549);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(168, 42);
-            this.button1.TabIndex = 4;
+            this.button1.TabIndex = 8;
             this.button1.Text = "Salvar";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.handleCreateTravelAsync);
@@ -187,7 +188,7 @@
             this.button2.Location = new System.Drawing.Point(466, 549);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(168, 42);
-            this.button2.TabIndex = 4;
+            this.button2.TabIndex = 7;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.HandleCancelCreateTravel);
@@ -213,7 +214,7 @@
             this.Controls.Add(this.travelName);
             this.Controls.Add(this.label1);
             this.Name = "FormCadastroViagem";
-            this.Text = "FormCadastroViagem";
+            this.Text = "1";
             this.Load += new System.EventHandler(this.FormCadastroViagem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

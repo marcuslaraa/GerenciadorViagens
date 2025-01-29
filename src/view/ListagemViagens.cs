@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,14 +26,17 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
 
         public async void ListagemViagens_Load(object sender, EventArgs e)
         {
+            
             dataGridView1.Rows.Clear();
 
 
             IEnumerable<Travel> travels = await _travelController.FindAll();
+            
 
             foreach (Travel travel in travels)
             {
-                dataGridView1.Rows.Add(travel.Id,travel.TravelName, travel.Destination, travel.InitialDate.ToString("dd/MM/yyyy"), travel.FinalDate.ToString("dd/MM/yyyy"), travel.Budget, travel.Description, "Editar", "Excluir", "Detalhes");
+                decimal budget = Convert.ToDecimal(travel.Budget);
+                dataGridView1.Rows.Add(travel.Id,travel.TravelName, travel.Destination, travel.InitialDate.ToString("dd/MM/yyyy"), travel.FinalDate.ToString("dd/MM/yyyy"), budget.ToString("C2", new CultureInfo("pt-BR")), travel.Description, "Editar", "Excluir", "Detalhes");
             }
 
         }

@@ -53,7 +53,7 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
             string time = tbx_time.Text;
             string status = tbx_status.Text;
 
-            Activities activitie = new Activities(name, location, time, date, status);
+            Activities activitie = new Activities(_id, name, location, time, date, status);
 
             await Task.Run(() => _activitiesController.UpdateActivitie(activitie, _id));
 

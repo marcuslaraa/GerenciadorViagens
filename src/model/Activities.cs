@@ -16,12 +16,16 @@ namespace gerenciadorViagens_windowsForm_csharp.src.model
         public string Budget { get; set; }
         public string Status { get; set; }
 
+        public int TravelId { get; set; }
+
+
         public Activities()
         {
         }
 
-        public Activities(string name, string location, string time, DateTime date, string status)
+        public Activities(int travelId, string name, string location, string time, DateTime date, string status)
         {
+            TravelId = travelId;
             Name = name;
             Location = location;
             Time = time;

@@ -14,5 +14,6 @@ namespace gerenciadorViagens_windowsForm_csharp.src.interfaces
         Task Add(T a);
         Task Update(T a, int id);
         bool Delete(int id);
+        Task<IEnumerable<T>> GetByTravelIdAsync(int travelId);
     }
     }
