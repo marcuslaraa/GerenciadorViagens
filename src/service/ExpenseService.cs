@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using gerenciadorViagens_windowsForm_csharp.src.interfaces;
 using gerenciadorViagens_windowsForm_csharp.src.model;
+using gerenciadorViagens_windowsForm_csharp.src.repository;
 
 namespace gerenciadorViagens_windowsForm_csharp.src.service
 {
@@ -30,6 +32,7 @@ namespace gerenciadorViagens_windowsForm_csharp.src.service
 
         public async Task<Expense> GetById(int id)
         {
+            MessageBox.Show("chegou Service");
             return await _expenseRepository.GetById(id);
         }
 
@@ -37,6 +40,20 @@ namespace gerenciadorViagens_windowsForm_csharp.src.service
         {
             expense.validate();
             await _expenseRepository.Update(expense, id);
+        }
+
+        public bool Delete(int id)
+        {
+            try
+            {
+                return _expenseRepository.Delete(id);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Erro ao excluir despesa: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
     }

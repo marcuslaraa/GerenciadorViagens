@@ -16,6 +16,7 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
 {
     public partial class ListagemViagens : Form
     {
+        private readonly TravelController _travelController = new TravelController(new TravelRepository(new ApplicationDbContext()));
         public ListagemViagens()
         {
             InitializeComponent();
@@ -25,12 +26,12 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
         {
             dataGridView1.Rows.Clear();
 
-            TravelController travelController = new TravelController(new TravelRepository(new ApplicationDbContext()));
-            IEnumerable<Travel> travels = await travelController.FindAll();
+
+            IEnumerable<Travel> travels = await _travelController.FindAll();
 
             foreach (Travel travel in travels)
             {
-                dataGridView1.Rows.Add(travel.Id,travel.TravelName, travel.Destination, travel.InitialDate.ToString("dd/MM/yyyy"), travel.FinalDate.ToString("dd/MM/yyyy"), travel.Budget, travel.Description, "Editar", "Detalhes");
+                dataGridView1.Rows.Add(travel.Id,travel.TravelName, travel.Destination, travel.InitialDate.ToString("dd/MM/yyyy"), travel.FinalDate.ToString("dd/MM/yyyy"), travel.Budget, travel.Description, "Editar", "Excluir", "Detalhes");
             }
 
         }
@@ -48,19 +49,27 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
 
             if (e.ColumnIndex == dataGridView1.Columns["editTravel"].Index && e.RowIndex >= 0)
             {
-
                 FormAtualizarViagem formAtualizarViagem = new FormAtualizarViagem(travelId);
                 formAtualizarViagem.Show();
                 this.Hide();
-
             }
 
             if (e.ColumnIndex == dataGridView1.Columns["details"].Index && e.RowIndex >= 0)
             {
-
                 DetalhesDaViagem detalhesDaViagem = new DetalhesDaViagem(travelId);
                 detalhesDaViagem.Show();
                 this.Hide();
+            }
+
+            if (e.ColumnIndex == dataGridView1.Columns["delete"].Index && e.RowIndex >= 0)
+            {
+                bool deleteTravel = _travelController.DeleteTravel(travelId);
+
+                (Application.OpenForms["ListagemViagens"] as ListagemViagens)?.ListagemViagens_Load(this, EventArgs.Empty);
+
+                ListagemViagens listagemViagens = new ListagemViagens();
+                listagemViagens.Show();
+                this.Close();
 
             }
         }

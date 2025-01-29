@@ -49,11 +49,13 @@ namespace gerenciadorViagens_windowsForm_csharp.src.controller
         {
             try
             {
+                MessageBox.Show("chegou");
                 return await _expenseService.GetById(id);
             }
             catch (Exception e)
             {
-                throw new Exception($"Erro: {e.Message}");
+                MessageBox.Show($"Erro: {e.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 
@@ -68,6 +70,22 @@ namespace gerenciadorViagens_windowsForm_csharp.src.controller
             {
                 MessageBox.Show($"Erro: {e.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public bool DeleteExpense(int id)
+        {
+            bool result = _expenseService.Delete(id);
+
+            if (result)
+            {
+                MessageBox.Show("Despesa excluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao excluir despesa. A despesa não foi encontrada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return result;
         }
 
 

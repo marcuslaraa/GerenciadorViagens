@@ -71,5 +71,21 @@ namespace gerenciadorViagens_windowsForm_csharp.src.controller
                 MessageBox.Show($"Erro: {e.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public bool DeleteTravel(int id)
+        {
+            bool result = _travelService.Delete(id);
+
+            if (result)
+            {
+                MessageBox.Show("Viagem excluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao excluir viagem. A viagem não foi encontrada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return result;
+        }
     }
 }

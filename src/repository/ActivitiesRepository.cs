@@ -52,14 +52,17 @@ namespace gerenciadorViagens_windowsForm_csharp.src.repository
             }
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             Activities act = _context.Activities.Find(id);
             if (act != null)
             {
                 _context.Activities.Remove(act);
                 _context.SaveChanges();
+                return true;
             }
+
+            return false;
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnCadastrarViagem = new System.Windows.Forms.Button();
@@ -39,6 +40,7 @@
             this.budget = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editTravel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.delete = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.details = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -67,12 +69,13 @@
             this.budget,
             this.description,
             this.editTravel,
+            this.delete,
             this.details});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonShadow;
-            this.dataGridView1.Location = new System.Drawing.Point(69, 121);
+            this.dataGridView1.Location = new System.Drawing.Point(39, 121);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(882, 253);
+            this.dataGridView1.Size = new System.Drawing.Size(933, 253);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -137,6 +140,15 @@
             this.editTravel.Text = "Editar";
             this.editTravel.Width = 50;
             // 
+            // delete
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Red;
+            this.delete.DefaultCellStyle = dataGridViewCellStyle1;
+            this.delete.HeaderText = "";
+            this.delete.Name = "delete";
+            this.delete.Width = 50;
+            // 
             // details
             // 
             this.details.HeaderText = "Detalhes";
@@ -173,6 +185,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn budget;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.DataGridViewButtonColumn editTravel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delete;
         private System.Windows.Forms.DataGridViewButtonColumn details;
     }
 }

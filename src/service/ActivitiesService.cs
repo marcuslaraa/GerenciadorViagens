@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using gerenciadorViagens_windowsForm_csharp.src.interfaces;
 using gerenciadorViagens_windowsForm_csharp.src.model;
+using gerenciadorViagens_windowsForm_csharp.src.repository;
 
 namespace gerenciadorViagens_windowsForm_csharp.src.service
 {
@@ -37,6 +39,20 @@ namespace gerenciadorViagens_windowsForm_csharp.src.service
         {
             activitie.validate();
             await _activitiesRepository.Update(activitie, id);
+        }
+
+        public bool Delete(int id)
+        {
+            try
+            {
+                return _activitiesRepository.Delete(id);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Erro ao excluir atividade: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }

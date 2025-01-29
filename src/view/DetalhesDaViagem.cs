@@ -12,6 +12,9 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
     public partial class DetalhesDaViagem : Form
     {
 
+        ActivitiesController _activitiesController = new ActivitiesController(new ActivitiesRepository(new ApplicationDbContext()));
+        ExpenseController _expenseController = new ExpenseController(new ExpenseRepository(new ApplicationDbContext()));
+
         private readonly int _id;
         public DetalhesDaViagem(int id)
         {
@@ -33,20 +36,19 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
 
             dataGridView1.Rows.Clear();
 
-            ActivitiesController activitiesController = new ActivitiesController(new ActivitiesRepository(new ApplicationDbContext()));
-            IEnumerable<Activities> activities = await activitiesController.FindAll();
+            IEnumerable<Activities> activities = await _activitiesController.FindAll();
 
             ExpenseController expenseController = new ExpenseController(new ExpenseRepository(new ApplicationDbContext()));
             IEnumerable<Expense> expenses = await expenseController.FindAll();
 
             foreach (Activities activitie in activities)
             {
-                dataGridView1.Rows.Add(activitie.Name, activitie.Location, activitie.Time, activitie.Date.ToString("dd/MM/yyyy"), activitie.Status, "Editar");
+                dataGridView1.Rows.Add(activitie.Id, activitie.Name, activitie.Location, activitie.Time, activitie.Date.ToString("dd/MM/yyyy"), activitie.Status, "Editar", "Excluir");
             }
 
             foreach (Expense expense in expenses)
             {
-                dataGridView2.Rows.Add(expense.Category, Convert.ToDecimal(expense.Value).ToString("C", new CultureInfo("pt-BR")), expense.Description, "Editar");
+                dataGridView2.Rows.Add(expense.Id, expense.Category, expense.Value, expense.Description, "Editar", "Excluir");
             }
         }
 
@@ -75,11 +77,51 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
 
             }
 
-            if (e.ColumnIndex == dataGridView2.Columns["expenseEdit"].Index && e.RowIndex >= 0)
+            if (e.ColumnIndex == dataGridView1.Columns["deleteAct"].Index && e.RowIndex >= 0)
             {
-                
+                int activitieId = (int)dataGridView1.Rows[e.RowIndex].Cells["Id"].Value;
+                _activitiesController.DeleteActivities(activitieId);
+
+                (Application.OpenForms["DetalhesDaViagem"] as DetalhesDaViagem)?.DetalhesDaViagem_Load(this, EventArgs.Empty);
+
+                DetalhesDaViagem detalhesDaViagem = new DetalhesDaViagem(_id);
+                detalhesDaViagem.Show();
+                this.Hide();
+
             }
 
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView2.Columns["expenseEdit"].Index && e.RowIndex >= 0)
+            {
+                FormAtualizarDespesa formAtualizarDespesa = new FormAtualizarDespesa(_id);
+                formAtualizarDespesa.Show();
+                this.Hide();
+            }
+
+            if (e.ColumnIndex == dataGridView2.Columns["deleteExp"].Index && e.RowIndex >= 0)
+            {
+                int expenseId = (int)dataGridView2.Rows[e.RowIndex].Cells["idExpense"].Value;
+                _expenseController.DeleteExpense(expenseId);
+
+                (Application.OpenForms["DetalhesDaViagem"] as DetalhesDaViagem)?.DetalhesDaViagem_Load(this, EventArgs.Empty);
+
+                DetalhesDaViagem detalhesDaViagem = new DetalhesDaViagem(_id);
+                detalhesDaViagem.Show();
+                this.Hide();
+
+            }
+
+
+        }
+
+        private void HandleBackList(object sender, EventArgs e)
+        {
+            ListagemViagens listagemViagens = new ListagemViagens();
+            listagemViagens.Show();
+            this.Close();
 
         }
     }

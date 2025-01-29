@@ -35,7 +35,7 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
             string description = tbx_description.Text;
             string value = tbx_value.Text;
 
-            Expense expense = new Expense(category, description, value);
+            Expense expense = new Expense(category, value, description);
 
             ExpenseController expenseController = new ExpenseController(new ExpenseRepository(new ApplicationDbContext()));
 

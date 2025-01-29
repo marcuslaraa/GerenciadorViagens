@@ -13,6 +13,6 @@ namespace gerenciadorViagens_windowsForm_csharp.src.interfaces
         Task<IEnumerable<T>> GetAll();
         Task Add(T a);
         Task Update(T a, int id);
-        void Delete(int id);
+        bool Delete(int id);
     }
     }

@@ -69,6 +69,22 @@ namespace gerenciadorViagens_windowsForm_csharp.src.controller
             }
         }
 
+        public bool DeleteActivities(int id)
+        {
+            bool result = _activitiesService.Delete(id);
+
+            if (result)
+            {
+                MessageBox.Show("Atividade excluída com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao excluir atividade. A atividade não foi encontrada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return result;
+        }
+
 
     }
 }

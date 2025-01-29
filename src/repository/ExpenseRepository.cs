@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using gerenciadorViagens_windowsForm_csharp.src.database;
 using gerenciadorViagens_windowsForm_csharp.src.interfaces;
 using gerenciadorViagens_windowsForm_csharp.src.model;
@@ -51,18 +52,16 @@ namespace gerenciadorViagens_windowsForm_csharp.src.repository
             }
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             Expense expense = _context.Expenses.Find(id);
             if (expense != null)
             {
                 _context.Expenses.Remove(expense);
                 _context.SaveChanges();
+                return true;
             }
-            else
-            {
-                throw new Exception("Despesa não encontrada.");
-            }
+            return false;
         }
 
     }

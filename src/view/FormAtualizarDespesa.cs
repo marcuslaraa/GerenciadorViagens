@@ -27,9 +27,13 @@ namespace gerenciadorViagens_windowsForm_csharp.src.view
         private void FormAtualizarDespesa_Load(object sender, EventArgs e)
         {
             Expense expense = _expenseController.GetById(_id).Result;
+            MessageBox.Show(expense.ToString());
+
+            if (expense == null) throw new Exception("Despesa não encontrada!");
+
             tbx_category.Text = expense.Category;
             tbx_description.Text = expense.Description;
-            tbx_value.Text = expense.Value.ToString();
+            tbx_value.Text = expense.Value;
 
         }
 
